@@ -1,0 +1,24 @@
+import { UserAudiences } from '../../shared/enums/user-audiences.enum';
+
+export class AuthenticatedUser {
+	id: string;
+
+	name: string;
+
+	email: string;
+
+	audiences: Array<UserAudiences>;
+
+	constructor(id: string, name: string, email: string, audiences: Array<UserAudiences>) {
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.audiences = audiences;
+	}
+
+	static create(user: any): AuthenticatedUser {
+		const { id, name, email, audiences } = user;
+
+		return new AuthenticatedUser(id, name, email, audiences);
+	}
+}
